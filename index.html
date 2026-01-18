@@ -8,55 +8,63 @@
         body {
             display: flex; justify-content: center; align-items: center;
             height: 100vh; margin: 0; background-color: #f9e3e3;
-            font-family: 'Arial', sans-serif; flex-direction: column;
-            text-align: center;
+            font-family: 'Arial', sans-serif; flex-direction: column; text-align: center;
         }
-        h1 { color: #d32f2f; font-size: 2.5em; }
+        .buttons { margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; }
         .yes-button {
-            font-size: 1.5em; padding: 10px 20px; margin: 10px;
-            background-color: #4caf50; color: white; border: none;
-            border-radius: 5px; cursor: pointer;
+            font-size: 1.5em; padding: 10px 20px; background-color: #4caf50;
+            color: white; border: none; border-radius: 5px; cursor: pointer;
         }
         .no-button {
-            font-size: 1.5em; padding: 10px 20px; margin: 10px;
-            background-color: #f44336; color: white; border: none;
-            border-radius: 5px; cursor: pointer;
+            font-size: 1.5em; padding: 10px 20px; background-color: #f44336;
+            color: white; border: none; border-radius: 5px; cursor: pointer;
         }
-        img { max-width: 80%; height: auto; border-radius: 10px; margin-top: 20px; }
+        .gif_container img { max-width: 250px; border-radius: 10px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div id="main-content">
+    <div id="main-container">
         <h1>¿Quieres ser mi San Valentín? 💌</h1>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif">
+        </div>
         <div class="buttons">
-            <button class="yes-button" onclick="handleYes()">Sí</button>
-            <button class="no-button" onclick="handleNo()">No</button>
+            <button class="yes-button" id="yesBtn" onclick="handleYes()">Sí</button>
+            <button class="no-button" id="noBtn" onclick="handleNo()">No</button>
         </div>
     </div>
 
     <script>
+        // Los mensajes que definiste en tu proyecto original 
         const messages = [
-            "¿Estás segura?", "¿Realmente segura?", "Piénsalo un poquito...",
-            "¡Pookie, por favor!", "¡Me pondré muy triste!", "Estaré muy, muy triste..."
+            "¿Are you sure?", "¿Really sure??", "¿Are you positive?",
+            "Pookie please...", "Just think about it!", "I will be very sad...",
+            "Just kidding, say yes please! ❤️"
         ];
         let messageIndex = 0;
 
         function handleNo() {
-            const noBtn = document.querySelector('.no-button');
-            const yesBtn = document.querySelector('.yes-button');
-            noBtn.textContent = messages[messageIndex];
+            const noButton = document.getElementById('noBtn');
+            const yesButton = document.getElementById('yesBtn');
+            
+            // Cambia el texto del botón No 
+            noButton.textContent = messages[messageIndex];
             messageIndex = (messageIndex + 1) % messages.length;
-            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-            yesBtn.style.fontSize = (currentSize * 1.4) + "px";
+            
+            // Hace crecer el botón Sí 
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize * 1.5) + "px";
         }
 
         function handleYes() {
-            document.body.innerHTML = `
-                <h1>¡Sabía que dirías que sí! ❤️</h1>
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
-            `; [cite: 1]
+            // Esta función reemplaza el contenido por la página de éxito 
+            document.getElementById('main-container').innerHTML = `
+                <h1 class="header_text">Knew you would say yes! ❤️</h1>
+                <div class="gif_container">
+                    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+                </div>
+            `;
         }
     </script>
 </body>
