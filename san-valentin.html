@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín? ❤️</title>
+    <style>
+        body {
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; margin: 0; background-color: #f9e3e3;
+            font-family: 'Arial', sans-serif; flex-direction: column;
+            text-align: center;
+        }
+        h1 { color: #d32f2f; font-size: 2.5em; }
+        .yes-button {
+            font-size: 1.5em; padding: 10px 20px; margin: 10px;
+            background-color: #4caf50; color: white; border: none;
+            border-radius: 5px; cursor: pointer;
+        }
+        .no-button {
+            font-size: 1.5em; padding: 10px 20px; margin: 10px;
+            background-color: #f44336; color: white; border: none;
+            border-radius: 5px; cursor: pointer;
+        }
+        img { max-width: 80%; height: auto; border-radius: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <h1>¿Quieres ser mi San Valentín? 💌</h1>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYes()">Sí</button>
+            <button class="no-button" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "¿Estás segura?", "¿Realmente segura?", "Piénsalo un poquito...",
+            "¡Pookie, por favor!", "¡Me pondré muy triste!", "Estaré muy, muy triste..."
+        ];
+        let messageIndex = 0;
+
+        function handleNo() {
+            const noBtn = document.querySelector('.no-button');
+            const yesBtn = document.querySelector('.yes-button');
+            noBtn.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize * 1.4) + "px";
+        }
+
+        function handleYes() {
+            document.body.innerHTML = `
+                <h1>¡Sabía que dirías que sí! ❤️</h1>
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+            `; [cite: 1]
+        }
+    </script>
+</body>
+</html>
